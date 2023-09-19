@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="manifest" href="public/site.webmanifest" />
+        <link rel="icon" type="image/x-icon" href="public/favicon.ico" />
+        <link rel="stylesheet" href="main.css" />
+        <title>Biller</title>
+
+        <script src="main.js" type="text/javascript"></script>
+        <script>
+            window.addEventListener('load', () => {
+                document.querySelectorAll('input[storage], textarea[storage]').forEach((input) => {
+                    input.addEventListener('change', () => saveInputValue(input));
+                });
+
+                loadStorage();
+            });
+        </script>
+    </head>
+    <body translate="yes">
+        <main class="form">
+            <div class="form-section">
+                <p class="form-title">Bill</p>
+                <div class="form-row">
+                    <input storage id="billNumber" class="form-input blue" placeholder="No." type="number" autofocus />
+                    <input storage id="billDate" class="form-input blue" placeholder="Date" type="date" />
+                </div>
+            </div>
+            <div class="form-section">
+                <p class="form-title">Seller</p>
+                <input storage id="sellerLogo" class="form-input blue" type="file" accept="image/png, image/jpeg" />
+                <input storage id="sellerName" class="form-input blue" placeholder="Name" />
+                <input storage id="sellerEmail" class="form-input blue" placeholder="Email" />
+                <div class="form-row">
+                    <input storage id="sellerPhone" class="form-input blue" placeholder="Phone" />
+                    <input storage id="sellerRut" class="form-input blue" placeholder="RUT" translate="no" />
+                </div>
+                <input storage id="sellerBank" class="form-input blue" placeholder="Bank Account" />
+            </div>
+            <div class="form-section">
+                <p class="form-title">Sender</p>
+                <input storage id="senderName" class="form-input blue" placeholder="Name" />
+                <input storage id="senderEmail" class="form-input blue" placeholder="Email" />
+                <div storage class="form-row">
+                    <input storage id="senderPhone" class="form-input blue" placeholder="Phone" />
+                    <input storage id="senderRut" class="form-input blue" placeholder="NIT" translate="no" />
+                </div>
+                <input storage id="senderAddress" class="form-input blue" placeholder="Address" />
+            </div>
+            <div class="form-section">
+                <p class="form-title">Receiver</p>
+                <input storage id="receiverName" class="form-input blue" placeholder="Name" />
+                <input storage id="receiverEmail" class="form-input blue" placeholder="Email" />
+                <div class="form-row">
+                    <input storage id="receiverPhone" class="form-input blue" placeholder="Phone" />
+                    <input storage id="receiverRut" class="form-input blue" placeholder="NIT" translate="no" />
+                </div>
+                <input storage id="receiverAddress" class="form-input blue" placeholder="Address" />
+            </div>
+            <div class="form-section">
+                <p class="form-title">Product Image</p>
+                <input storage id="productImage" class="form-input blue" type="file" accept="image/png, image/jpeg" />
+            </div>
+            <div class="form-section">
+                <p class="form-title">Message</p>
+                <textarea storage id="productMessage" class="form-input blue" placeholder="Message"></textarea>
+            </div>
+            <div class="form-section">
+                <p class="form-title">Articles</p>
+                <textarea id="itemDescription" class="form-input blue" placeholder="Article Description"></textarea>
+                <div class="form-row">
+                    <input id="itemPrice" class="form-input blue" placeholder="Price" />
+                    <input id="itemUnits" class="form-input blue" placeholder="Units" />
+                </div>
+                <div class="form-row">
+                    <button class="form-button blue" onclick="addItem()">Add</button>
+                    <button class="form-button red" onclick="deleteItem()">Delete</button>
+                    <input style="width: 50%" id="itemDelete" class="form-input red" placeholder="No." />
+                </div>
+                <div id="items" class="items">
+                    <div class="item">
+                        <div class="item-col-sm" style="font-weight: 600">No</div>
+                        <div class="item-col-lg" style="font-weight: 600">Article</div>
+                        <div class="item-col-md" style="font-weight: 600">Price</div>
+                        <div class="item-col-md" style="font-weight: 600">Units</div>
+                        <div class="item-col-md" style="font-weight: 600">Total</div>
+                    </div>
+                </div>
+            </div>
+            <a class="form-button blue" href="./download.html">Generate PDF</a>
+        </main>
+    </body>
+</html>
